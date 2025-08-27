@@ -81,10 +81,10 @@ private:
             header.stamp = ros::Time::now();
             auto msg = cv_bridge::CvImage(header, "bgr8", frame).toImageMsg();
             
-            camera_info_msg_.header = header;
+            // camera_info_msg_.header = header;
             
             img_pub_.publish(*msg);
-            cam_info_pub_.publish(camera_info_msg_);
+            // cam_info_pub_.publish(camera_info_msg_);
         } else {
             ROS_WARN("Failed to read frame from camera");
             cap_.release();
@@ -92,8 +92,8 @@ private:
     }
 
     ros::Publisher img_pub_;
-    ros::Publisher cam_info_pub_;
-    sensor_msgs::CameraInfo camera_info_msg_;
+    // ros::Publisher cam_info_pub_;
+    //sensor_msgs::CameraInfo camera_info_msg_;
     ros::Timer timer_;
     cv::VideoCapture cap_;
 };
